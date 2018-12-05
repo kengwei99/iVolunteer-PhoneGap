@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:; font-src 'self' data: fonts.gstatic.com" />
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+  <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <title>Ivolunteer Phonegap App</title>
+</head>
+<body>
+<div data-role="page" id="screenHome">
+  <div data-role="header"> 
+    <a href="#screenAdd" class="ui-btn ui-corner-all ui-icon-plus ui-btn-icon-left" data-transition="slide" >Add</a>
+    <h3>iVolunteer - Home</h3>
+    <a href="#screenView" class="ui-btn ui-corner-all ui-icon-search ui-btn-icon-left" data-transition="slide" id="topView">View</a>
+  </div> 
+  
+  <div data-role="main" class="ui-content">
+    <a href="#screenAdd" class="ui-btn" data-transition="slide" >Add Event</a>
+    <a href="#screenView" class="ui-btn" data-transition="slide" id="btn_view">View All Event</a>
+    <button class="ui-btn" id="btn-delete">Delete All Event</button>
+  </div>
+  
+  <div data-role="footer" data-position="fixed"> 
+    <h4>&copy; Copyright 2018, Develop by Teoh Keng Wei</h4> 
+  </div> 
+</div>
+
+<div data-role="page" id="screenAdd">
+  <div data-role="header"> 
+    <a href="#screenHome" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-left" data-transition="slide" data-direction="reverse">Back</a>
+    <h3>ivolunteer - Add</h3>
+    <a href="#screenView" class="ui-btn ui-corner-all ui-icon-search ui-btn-icon-left" data-transition="slide" data-direction="reverse" id="topView">View</a>
+  </div> 
+  
+  <div data-role="main" class="ui-content">
+    <div class="fieldcontain">
+        <label for="activity_name">Activity Name:</label>
+        <input name="activity_name" id="input_activity_name" type="text" data-mini="true">
+        <br/>
+        <label for="activity_location">Activity's Location:</label>
+        <input name="activity_location" id="input_activity_location" type="text" data-mini="true">
+        <br/>
+        <label for="activity_date">Date:</label>
+        <input name="activity_date" id="input_activity_date" type="date" data-mini="true">
+        <br/>
+        <label for="activity_time">Activity's Time:</label>
+        <input name="activity_time" id="input_activity_time" type="time" data-mini="true">
+        <br/>
+        <label for="volunteer_name">Volunteer's Name:</label>
+        <input name="volunteer_name" id="input_volunteer_name" type="text" data-mini="true">
+        <br/>
+        <button class="ui-shadow ui-btn ui-corner-all" id="btn_confirm">Add Event</button>
+      
+    </div>
+  </div>
+  
+  <div data-role="footer" data-position="fixed"> 
+    <h4>&copy; Copyright 2018, Develop by Teoh Keng Wei</h4> 
+  </div> 
+</div>
+
+<div data-role="page" id="screenView">
+  <div data-role="header"> 
+    <a href="#screenHome" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-left" data-transition="slide" data-direction="reverse">Back</a>
+    <h3>iVolunteer - View</h3>
+    <a href="#screenAdd" class="ui-btn ui-corner-all ui-icon-plus ui-btn-icon-left" data-transition="slide" data-direction="reverse">Add</a>
+  </div> 
+  
+  <div data-role="main" class="ui-content">
+    <form class="ui-filterable">
+    <input id="myFilter" data-type="search" data-filter-placeholder="search here..">
+    <select id="advancesearch">
+      <option id="a_name">Search by Activity Name</option>
+      <option id="a_location">Search by Activity Location</option>
+      <option id="a_date">Search by Activity Date</option>
+      <option id="a_time">Search by Activity Time</option>
+      <option id="v_name">Search by Volunteer Name</option>
+    </select>
+    </form>
+    <div id="searchPickPlace">
+    <ul data-role="listview" id="listActivity" data-inset="true" >
+    </ul>
+    </div>
+  </div>
+  
+  <div data-role="footer" data-position="fixed"> 
+    <h4>&copy; Copyright 2018, Develop by Teoh Keng Wei</h4> 
+  </div> 
+</div>
+
+<div data-role="page" id="screenViewDetails">
+  <div data-role="header"> 
+    <a href="#screenView" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-left" data-transition="slide" data-direction="reverse">Back</a>
+    <h3>iVolunteer</h3>
+    <button class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-left" id="btn_delete_specific">Delete Activity</button>
+  </div> 
+  
+  <div data-role="main" class="ui-content">
+    <div class="fieldcontain">
+      <div data-role="header">
+      <h4> Activity's Details: </h4>
+      </div>
+      <ul data-role="listview" id="viewdetails" data-inset="true" >
+      </ul>
+      <label for="reportinput"><strong>Write a report: </strong></label>
+      <textarea name="reportinput" id="reportinput"></textarea>
+      <button class="ui-shadow ui-btn ui-corner-all" id="btn_addreport">Add Report</button>
+      <h4>Activity's Report/s: </h4>
+      <ul data-role="listview" id="viewreports" data-inset="true" >
+      </ul>
+    </div>
+  </div>
+  
+  <div data-role="footer" data-position="fixed"> 
+    <h4>&copy; Copyright 2018, Develop by Teoh Keng Wei</h4> 
+  </div> 
+</div>
+
+<!-- Dialog for add event confirmation -->
+<div data-role="dialog" id="dialog_confirm_activity">
+  <div data-role="header">
+    <h3>Activity Confirmation</h3>
+  </div>
+  <div data-role="content">
+  <div class="fieldcontain">
+    <label for="activity_name"><strong>Activity Name: </strong><text id="txt_activity_name"></text></label>
+    <br/>
+    <label for="activity_location"><strong>Activity's Location: </strong><text id="txt_activity_location"></text></label>
+    <br/>
+    <label for="activity_date"><strong>Date: </strong><text id="txt_activity_date"></text></label>
+    <br/>
+    <label for="activity_time"><strong>Activity's Time: </strong><text id="txt_activity_time"></text></label>
+    <br/>
+    <label for="volunteer_name"><strong>Volunteer's Name: </strong><text id="txt_volunteer_name"></text></label>
+    
+    <a id="btn_add" class="ui-btn ui-corner-all ui-icon-search ui-btn-icon-left" dataicon="check">Confirm Add</a>
+    <a href="#screenAdd" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-left" >Back</a>
+  </div>
+  </div>
+</div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
+
